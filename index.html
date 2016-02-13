@@ -1,0 +1,46 @@
+<!DOCTYPE>
+<html ng-app>
+<head>
+<title>PHP MySQL API Consumed with AngularJS</title>
+<script src="angular.js"></script>
+<script src="data.js"></script>
+</head>
+
+<body>
+<div ng-click='GetUsers'>rr</div>
+<img width="111" height="54" id="myimage" src="http://www.phpro.org/assets/img/logo.png" data-sticky-height="40" data-sticky-width="82" alt="PHPRO.ORG" style="display: inline-block; width: 82px; height: 40px; top: 28px;">
+<div ng-controller="GetUsers">
+<table>
+<thead><tr><th>ID</th><th>Name</th><th>Email</th></tr></thead>
+<tbody>
+<tr ng-repeat="user in users"><td>{{user.id}}</td><td>{{ user.name }}</td><td>{{user.email}}</td></tr>
+</tbody>
+</tfoot></tfoot>
+</table>
+</div>
+<div id='foo' style='height:300px; width:300px; background-color:red'></div>
+</body>
+<script src="jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+ 	
+ 		$('#foo').bind('wheel mousewheel', function(e){
+	
+			console.log(e.originalEvent.wheelDelta);
+			var delta;
+		    if (e.originalEvent.wheelDelta !== undefined)
+		        delta = e.originalEvent.wheelDelta;
+		    else
+		        delta = e.originalEvent.deltaY * -1;
+
+		        if(delta > 0) {
+		            console.log('wheel +++++');
+		            $('#foo').css('height',50);
+		        }
+		        else{
+		            $('#foo').css('height',50);
+		            console.log('wheel ----');
+		        }
+    	});
+ 	});
+</script>
