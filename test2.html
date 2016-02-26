@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>&quot;Trailer  Music&quot;</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style type="text/css">
+            body {
+                    margin-left: 10px;
+                    margin-top: 0px;
+                    margin-right: 0px;
+                    margin-bottom: 0px;
+            }
+            
+            svg {
+                background: url(bl.png) no-repeat top left;
+                background-size: 100% auto;
+            }
+
+            *:focus{
+                outline: none;
+                outline-width: 0;
+            }
+           
+        </style>
+    </head>
+
+    <body bgcolor="#FFFFFF">
+        <svg  version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"   preserveAspectRatio="none"  xml:space="preserve" viewBox="0 0 1366 768" enable-background="new 0 0 1366 768">
+            <defs>
+                <radialGradient id="RadialGradient1">
+                    <stop offset="0%" stop-color="red"/>
+                    <stop offset="100%" stop-color="blue"/>
+                </radialGradient>
+            </defs>
+            <polygon class="foo" points="0,75,40,100,80,75,80,25,40,0,0,25" fill="url(#RadialGradient1)" style="stroke:#000;stroke-width:1;cursor: pointer;"  onclick="polyclicked()"/>
+            <polygon class="foo" points="80,75,120,100,160,75,160,25,120,0,80,25"  fill="url(#RadialGradient1)" style="stroke-width:1;cursor: pointer;border-image:bl.png"/> 
+            <text x="13" y="33" class="caption">Fact</text>
+        </svg>
+    </body>
+    
+</html>
+
+<script src="jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+    function polyclicked() {
+        prompt('hello','dsf');
+    }
+    $(document).ready(function(){
+    
+        $('svg').bind('wheel mousewheel', function(e){
+            e.preventDefault();
+            var delta;
+            if (e.originalEvent.wheelDelta !== undefined)
+                delta = e.originalEvent.wheelDelta;
+            else
+                delta = e.originalEvent.deltaY * -1;
+
+                if(delta > 0) {
+                    var w = parseInt($('svg')[0].viewBox.animVal.width) - 50; 
+                    var h = parseInt($('svg')[0].viewBox.animVal.height) - 25; 
+                    $('svg')[0].setAttribute('viewBox', '0 0 '+w+' '+h+'') ;
+                    var newtrans = parseInt($('svg').css('transform').split(',')[5]) + .1;
+                    $('svg').css('transform','scale(' + 1 + ')');
+                    console.log($('svg').css('transform').split(',')[5]);
+                    
+                }else{
+                    var w = parseInt($('svg')[0].viewBox.animVal.width) + 50; 
+                    var h = parseInt($('svg')[0].viewBox.animVal.height) + 25; 
+                    $('svg')[0].setAttribute('viewBox', '0 0 '+w+' '+h+'') ;
+                }
+
+        });
+    });
+</script>

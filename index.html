@@ -1,15 +1,87 @@
 <!DOCTYPE>
-<html ng-app>
+<html >
 <head>
 <title>PHP MySQL API Consumed with AngularJS</title>
 <script src="angular.js"></script>
 <script src="data.js"></script>
+<style type="text/css">
+.hexagon {
+    width: 100px;
+    height: 55px;
+    position: relative; 
+}
+.hexagon, .hexagon:before, .hexagon:after {
+    background: #fff;
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.8);   
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.8);   
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);   
+}
+.hexagon:before, .hexagon:after {
+    content: "";
+    position: absolute;
+    left: 22px;
+    width: 57px;
+    height: 57px;
+    -moz-transform: rotate(145deg) skew(22.5deg);
+    -webkit-transform: rotate(145deg) skew(22.5deg);
+    transform: rotate(145deg) skew(22.5deg);
+}
+.hexagon:before {
+    top: -29px;
+}
+.hexagon:after {
+    top: 27px;
+}
+.hexagon span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 55px;
+    background:#fff;
+    z-index: 1;
+}
+</style>
+<script type="text/javascript">
+  window.onload = function () {
+    var ImageMap = function (map, img) {
+            var n,
+                areas = map.getElementsByTagName('area'),
+                len = areas.length,
+                coords = [],
+                previousWidth = 128;
+            for (n = 0; n < len; n++) {
+                coords[n] = areas[n].coords.split(',');
+            }
+            this.resize = function () {
+                var n, m, clen,
+                    x = img.offsetWidth / previousWidth;
+                for (n = 0; n < len; n++) {
+                    clen = coords[n].length;
+                    for (m = 0; m < clen; m++) {
+                        coords[n][m] *= x;
+                    }
+                    areas[n].coords = coords[n].join(',');
+                }
+                previousWidth = document.body.clientWidth;
+                return true;
+            };
+            window.onresize = this.resize;
+        },
+        imageMap = new ImageMap(document.getElementById('map_ID'), document.getElementById('img_ID'));
+    imageMap.resize();
+    return;
+}
+
+
+</script>
 </head>
 
-<body>
-<div ng-click='GetUsers'>rr</div>
+<body ng-app="changeExample">
+<div ng-click='PostUsers' ng-controller="ExampleController">rr</div>
 <img width="111" height="54" id="myimage" src="http://www.phpro.org/assets/img/logo.png" data-sticky-height="40" data-sticky-width="82" alt="PHPRO.ORG" style="display: inline-block; width: 82px; height: 40px; top: 28px;">
 <div ng-controller="GetUsers">
+<div id='foo' style='height:300px; width:300px; background-color:red'></div>
 <table>
 <thead><tr><th>ID</th><th>Name</th><th>Email</th></tr></thead>
 <tbody>
@@ -18,7 +90,65 @@
 </tfoot></tfoot>
 </table>
 </div>
-<div id='foo' style='height:300px; width:300px; background-color:red'></div>
+<div>
+<style type="text/css">
+ #tva{
+  background-color: #fff;
+ }
+</style>
+<div style="width:100%;">
+    <img class="map" src="bl.png" usemap="#map_ID" border="0" width="500px" alt="" />
+</div>
+<map id="map_ID" name="map">
+<area shape="poly" id="tva" coords="173,8,322,96,322,267,173,351,25,267,25,96" href="javascript:;" alt="Bandcamp" title="Bandcamp" />
+</map>
+</div>
+<div style="height: 88px;padding-top:34px">
+	<span style="float: left">
+    <div class="hexagon">
+      <span></span>
+    </div>
+  </span>
+  <span style="float: left;margin-left:8px">
+    <div class="hexagon">
+      <span></span>
+    </div>
+  </span>
+  <span style="float: left;margin-left:8px">
+    <div class="hexagon">
+      <span></span>
+    </div>
+  </span><span style="float: left;margin-left:8px">
+    <div class="hexagon">
+      <span></span>
+    </div>
+  </span><span style="float: left;margin-left:8px">
+    <div class="hexagon">
+      <span></span>
+    </div>
+  </span>
+</div>
+<div style="height: 88px;padding:7 0 0 56">
+	<span style="float: left">
+    <div class="hexagon">
+      <span></span>
+    </div>
+  </span>
+ 
+  <span style="float: left;margin-left:8px">
+    <div class="hexagon">
+      <span></span>
+    </div>
+  </span><span style="float: left;margin-left:8px">
+    <div class="hexagon">
+      <span></span>
+    </div>
+  </span><span style="float: left;margin-left:8px">
+    <div class="hexagon">
+      <span></span>
+    </div>
+  </span>
+</div>
 </body>
 <script src="jquery-2.1.4.min.js"></script>
 <script type="text/javascript">
@@ -26,7 +156,6 @@
  	
  		$('#foo').bind('wheel mousewheel', function(e){
 	
-			console.log(e.originalEvent.wheelDelta);
 			var delta;
 		    if (e.originalEvent.wheelDelta !== undefined)
 		        delta = e.originalEvent.wheelDelta;
@@ -35,10 +164,14 @@
 
 		        if(delta > 0) {
 		            console.log('wheel +++++');
-		            $('#foo').css('height',50);
-		        }
-		        else{
-		            $('#foo').css('height',50);
+                console.log(  parseInt($('#foo').css('height')));
+                $('#foo').css('height',  parseInt($('#foo').css('height')) + 50);
+            }
+            else{
+                console.log(  parseInt($('#foo').css('height')));
+                if(parseInt($('#foo').css('height')) >300){
+                  $('#foo').css('height',  parseInt($('#foo').css('height')) - 50);
+                }
 		            console.log('wheel ----');
 		        }
     	});

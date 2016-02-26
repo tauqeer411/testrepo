@@ -1,33 +1,72 @@
-<!DOCTYPE>
-<html ng-app>
-<head>
-<title>PHP MySQL API Consumed with AngularJS</title>
-</head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title></title>
+        <style type="text/css">
+            #imgMapContainer {
+                position: relative;
+            }
+            #rm1Status {
+                position: absolute;
+                top: 50px;
+                left: 20px;
+                display: none;
+            }
+            #rm2Status {
+                position: absolute;
+                top: 50px;
+                left: 120px;
+                display: none;
+            }
+            #rm3Status {
+                position: absolute;
+                top: 150px;
+                left: 20px;
+                display: none;
+            }
+            #rm4Status {
+                position: absolute;
+                top: 150px;
+                left: 120px;
+                display: none;
+            }
+        </style>
+        <script type="text/javascript">
+            function doThis(str){
+                document.getElementById(str+'Status').style.display='block';
+            }
+        </script>
+    </head>
+    <body>
+        <!-- <div id="imgMapContainer">
+            <img src="bl.png" usemap="#Map" alt="" class="no_items" />
+            <div id="rm1Status">Booked</div>
+            <div id="rm2Status">Free</div>
+            <div id="rm3Status">Free</div>
+            <div id="rm4Status">Booked</div>
+        </div>
+        <map name="Map" id="Map">
+            <area id="rm1" shape="rect" coords="0,0,100,100" href="" onclick="doThis(this.id);return false;" />
+            <area id="rm2" shape="rect" coords="100,0,200,100" href="" onclick="doThis(this.id);return false;" />
+            <area id="rm3" shape="rect" coords="0,100,100,200" href="" onclick="doThis(this.id);return false;" />
+            <area id="rm4" shape="rect" coords="100,100,200,200" href="" onclick="doThis(this.id);return false;" />
+        </map> -->
+    
+<img src="bl.png" alt="" usemap="#Map" />
+<map name="Map" id="Map">
+    <area alt="" title="" href="#" shape="poly" coords="316,90,312,217,390,278,459,213,457,93,384,39" />
+    <area alt="" title="" href="#" shape="poly" coords="461,215,394,279,437,289,468,258" />
+    <area alt="" title="" href="#" shape="poly" coords="388,279,312,223,308,257,356,295" />
+    <area alt="" title="" href="#" shape="poly" coords="314,93,308,215,277,187,279,123" />
+    <area alt="" title="" href="#" shape="poly" coords="316,86,382,39,353,30,318,63" />
+    <area alt="" title="" href="#" shape="poly" coords="389,37,460,90,469,62,426,30" />
+    <area alt="" title="" href="#" shape="poly" coords="463,97,465,211,507,190,509,121" />
+</map>
 
-<body>
-<div ng-click='GetUsers'>rr</div>
-<img width="111" height="54" id="myimage" src="http://www.phpro.org/assets/img/logo.png" data-sticky-height="40" data-sticky-width="82" alt="PHPRO.ORG" style="display: inline-block; width: 82px; height: 40px; top: 28px;">
-<div ng-controller="GetUsers">
-<table>
-<thead><tr><th>ID</th><th>Name</th><th>Email</th></tr></thead>
-<tbody>
-<tr ng-repeat="user in users"><td>{{user.id}}</td><td>{{ user.name }}</td><td>{{user.email}}</td></tr>
-</tbody>
-</tfoot></tfoot>
-</table>
-</div>
-<div id='foo' style='height:300px; width:300px; background-color:red'></div>
-</body>
-<script src="jquery-2.1.4.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		console.log('ngf');
-	/*$('#foo').bind('mousewheel', function(e) {
-	    if(e.originalEvent.wheelDelta / 120 > 0) {
-	        alert('up');
-	    } else {
-	        alert('down');
-	    }
-	});*/
-	});
-</script>
+      <!--   <img src="http://betting.nextolive.com/img/bl.png" alt="" usemap="#map1456397217438">
+<map id="map1456397217438" name="map1456397217438"><area shape="rect" coords="146,58,280,155" title="sdf" alt="sdf" href="nextolive.com" target="_blank"><area shape="rect" coords="798,408,799,409" alt="Image HTML map generator" title="HTML Map creator" href="http://www.html-map.com/" target="_self"></map>
+<div style="position:relative; height:410px; width:800px; background:url(http://betting.nextolive.com/img/bl.png) 0 0 no-repeat;"><a style="position:absolute; top:58px; left:146px; width:134px; height:97px;" title="sdf" alt="sdf" href="nextolive.com" target="_blank"></a><a style="position:absolute; overflow:hidden; top:408px; left:798px; width:1px; height:1px;" title="HTML Map creator" alt="Image HTML map generator" href="http://www.html-map.com/" target="_self"></a></div> -->
+    </body>
+</html>

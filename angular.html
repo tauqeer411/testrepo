@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html >
+    <head>
+        <title>PHP MySQL API Consumed with AngularJS</title>
+        <script src="angular.js"></script>
+        <script src="data.js"></script>
+    </head>
+
+    <body ng-app="changeExample">
+        <div ng-click='PostUsers' ng-controller="ExampleController">rr</div>
+        <div data-ng-view>
+        Loading...
+        </div>
+        <div ng-controller="GetUsers">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="user in users" data-ng-show="user.id==1">
+                        <td>{{user.id}}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{user.email}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+        1+1+1+1 = {{1+1+1+1}}
+        </div>
+    </body>
+</html>
