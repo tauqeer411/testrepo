@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+  <head>
+    <script src="angular.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+    <div ng-controller="myController">
+		<my-popup dialog-title="My Title" is-draggable="{{isDraggable}}">Dialog Content</my-popup>
+		<div class="draggable" my-draggable="isDraggable">I am draggable {{isDraggable}}</div>
+	</div>
+  </body>
+
+</html>

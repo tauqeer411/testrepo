@@ -1,0 +1,21 @@
+/* Styles go here */
+.dialog {
+  width: 400px;
+  height: 100px;
+  border: 1px solid black;
+  position: absolute;
+}
+
+.title {
+  background: #0080ff;
+  color: #eee;
+}
+
+.draggable {
+  background: #ccc;
+  margin: 20px;
+  width: 100px;
+  cursor: move;
+  position: absolute;
+  top: 120px;
+}
