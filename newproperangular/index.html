@@ -1,16 +1,40 @@
 <!DOCTYPE html>
-<html ng-app>
+<html data-ng-app="">
 <head>
 	<title>tauqeer Test</title>
 	<script type="text/javascript" src="angular1.5.min.js"></script>
 </head>
 <body>
-<div class="container" data-ng-init="names=['aftab','tauqeer','hashir','shoib','tets']">
-	Name: <input type="text" ng-model="name" /> {{name}}
+<!-- <div class="container" data-ng-init="names=['aftab','tauqeer','hashir','Shoiab','tets']">
 
 	<ul>
-		<li ng-repeat="x in names">{{x}}</li>
+		<li ng-repeat="x in names">{{x | filter:name | lowercase }}</li>
+	</ul>
+</div> -->
+
+<div class="container" data-ng-controller="SimpleController">
+	<h3>Adding Simple controller </h3>
+	Name: <input type="text" ng-model="name" /> {{name}}
+	<ul>
+		<li data-ng-repeat="cust in customers">
+			{{ cust.name}} - {{ cust.city}}
+			
+		</li>
+			
 	</ul>
 </div>
+<script>
+	function SimpleController($scope){
+		$scope.customers = [
+							{ name :'Tauqeer Ahmad', city: 'Lucknow'},
+							{ name :'manish', city: 'test arws'},
+							{ name :'aftab', city: 'noida'},
+							{ name :'shoi', city: 'gahziapur'},
+							{ name :'testuser', city: 'testplace'},
+							{ name :'arshad', city: 'usa'},
+							];
+	}
+</script>
+
 </body>
 </html>
