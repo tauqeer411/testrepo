@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="MyCtrl">
+    <head>
+        <style type="text/css">
+            body {
+                    margin-left: 10px;
+                    margin-top: 0px;
+                    margin-right: 0px;
+                    margin-bottom: 0px;
+            }
+            
+            
+            *:focus{
+                outline: none;
+                outline-width: 0;
+            }
+           
+        </style>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    </head>
+    <body ng-mouse-wheel-up="upCount= upCount+1"  ng-mouse-wheel-down="downCount= downCount+1">
+        <svg  version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"   preserveAspectRatio="none"  xml:space="preserve" viewBox="0 0 1366 768" enable-background="new 0 0 1366 768">
+            <defs>
+                <radialGradient id="RadialGradient1">
+                    <stop offset="0%" stop-color="red"/>
+                    <stop offset="100%" stop-color="blue"/>
+                </radialGradient>
+                <radialGradient id="borderRadial">
+                    <stop offset="0%" stop-color="red"/>
+                    <stop offset="100%" stop-color="blue"/>
+                </radialGradient>
+            </defs>
+            <!-- <polygon class="foo" points="0,75,40,100,80,75,80,25,40,0,0,25" fill="url(#RadialGradient1)" style="stroke:#000;stroke-width:1;cursor: pointer;"  onclick="polyclicked()"/>
+            <polygon class="foo" points="80,75,120,100,160,75,160,25,120,0,80,25"  fill="url(#RadialGradient1)" style="stroke-width:1;cursor: pointer;border-image:bl.png"/> 
+            <text x="13" y="33" class="caption svg_tag_name"  style="cursor: pointer;" >Fact</text> -->
+            <polygon class="foo" points="100,00,125,25,125,50,100,75,75,50,75,25,100,00" fill="url(#RadialGradient1)" style="stroke:#000;stroke-width:1;cursor: pointer;" /> 
+            <polygon class="foo" points="100,75,125,50,150,75,150,150,125,175,100,150,75,175,50,150,50,75,75,50,100,75"  fill="url(#RadialGradient1)" style="stroke-width:1;cursor: pointer;border-image:bl.png"/>  
+             <polygon class="foo" points="25,100,50,125,50,150,25,175,00,150,00,125,25,100" fill="url(#RadialGradient1)" style="stroke:#000;stroke-width:1;cursor: pointer;"  /> 
+            <polygon class="foo" points="175,100,200,125,200,150,175,175,150,150,150,125,175,100"  fill="url(#RadialGradient1)" style="stroke-width:1;cursor: pointer;border-image:bl.png"/>  
+        </svg>
+            
+        <script src="../jquery-2.1.4.min.js"></script>
+        <!--    Modal box code Start   -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <style>
+           /* body { font-size: 62.5%; }*/
+            label, input { display:block; }
+            input.text { margin-bottom:12px; width:95%; padding: .4em; }
+            fieldset { padding:0; border:0; margin-top:25px; }
+            h1 { font-size: 1.2em; margin: .6em 0; }
+            div#users-contain { width: 350px; margin: 20px 0; }
+            div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+            div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+            .ui-dialog .ui-state-error { padding: .3em; }
+            .validateTips { border: 1px solid transparent; padding: 0.3em; }
+        </style>
+        <script>
+        var svgclicked;
+            $(function() {
+                var dialog, form,
+                dialog = $( "#dialog-form" ).dialog({
+                    autoOpen: false,
+                    height: 300,
+                    width: 350,
+                    modal: true,
+                    buttons: {
+                        "Save": function(){
+                            $(window.svgclicked).text($('#dept_name').val());
+                            dialog.dialog( "close" );
+                        },
+                        Cancel: function() {
+                            dialog.dialog( "close" );
+                        }
+                    },
+                    close: function() {
+                    }
+                });
+ 
+              
+ 
+                $( "#create-user" ).button().on( "click", function() {
+                    dialog.dialog( "open" );
+                });
+                $( ".svg_tag_name" ).on( "click", function() {
+                    $('#dept_name').val($(this).text());
+                    dialog.dialog( "open" );
+                    window.svgclicked =$(this);
+                });
+                
+            });
+        </script>
+        <div id="dialog-form" title="Change Department Name">
+            <form>
+                <fieldset>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="dept_name" value="" class="text ui-widget-content ui-corner-all">
+                    <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                </fieldset>
+            </form>
+        </div>
+ 
+ 
+        <div id="users-contain" class="ui-widget">
+            <h1>Existing Users:</h1>
+            <table id="users" class="ui-widget ui-widget-content">
+                <thead>
+                    <tr class="ui-widget-header ">
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>john.doe@example.com</td>
+                        <td>johndoe1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--    Modal box code End   -->
+  
+
+
+        <script>
+        var myApp = angular.module('myApp', []);
+
+
+        function MyCtrl($scope) {
+             $scope.upCount =  0;
+             $scope.downCount =  0;
+        }
+
+        myApp.directive('ngMouseWheelUp', function() {
+                return function(scope, element, attrs) {
+                    element.bind("DOMMouseScroll mousewheel onmousewheel", function(event) {
+                           
+                    	        // cross-browser wheel delta
+                    	        var event = window.event || event; // old IE support
+                    	        var delta = Math.max(-1, Math.min(1, (event.wheelDelta || -event.detail)));
+                    	
+                    	        if(delta > 0) {
+                                    scope.$apply(function(){
+                                        scope.$eval(attrs.ngMouseWheelUp);
+                                    });
+                                
+                                    console.log('++++++++');
+                                    var w = parseInt($('svg')[0].viewBox.animVal.width) - 50; 
+                                    var h = parseInt($('svg')[0].viewBox.animVal.height) - 25; 
+                                    $('svg')[0].setAttribute('viewBox', '0 0 '+w+' '+h+'') ;
+                                    var newtrans = parseInt($('svg').css('transform').split(',')[5]) + .1;
+                                    $('svg').css('transform','scale(' + 1 + ')');
+                                    // for IE
+                                    event.returnValue = false;
+                                    // for Chrome and Firefox
+                                    if(event.preventDefault) {
+                                        event.preventDefault();                        
+                                    }
+
+                                }
+                    });
+                };
+        });
+
+
+        myApp.directive('ngMouseWheelDown', function() {
+                return function(scope, element, attrs) {
+                    element.bind("DOMMouseScroll mousewheel onmousewheel", function(event) {
+                           
+                                // cross-browser wheel delta
+                                var event = window.event || event; // old IE support
+                                var delta = Math.max(-1, Math.min(1, (event.wheelDelta || -event.detail)));
+                        
+                                if(delta < 0) {
+                                    scope.$apply(function(){
+                                        scope.$eval(attrs.ngMouseWheelDown);
+                                    });
+                                    console.log('--------');
+                                    var w = parseInt($('svg')[0].viewBox.animVal.width) + 50; 
+                                    var h = parseInt($('svg')[0].viewBox.animVal.height) + 25; 
+                                    $('svg')[0].setAttribute('viewBox', '0 0 '+w+' '+h+'') ;
+                                    // for IE
+                                    event.returnValue = false;
+                                    // for Chrome and Firefox
+                                    if(event.preventDefault)  {
+                                    	event.preventDefault();
+                                    }
+
+                                }
+                    });
+                };
+        });
+
+        </script>
+    </body>
+</html>
