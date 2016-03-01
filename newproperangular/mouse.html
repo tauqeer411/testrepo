@@ -37,6 +37,10 @@
             <polygon class="foo" points="100,75,125,50,150,75,150,150,125,175,100,150,75,175,50,150,50,75,75,50,100,75"  fill="url(#RadialGradient1)" style="stroke-width:1;cursor: pointer;border-image:bl.png"/>  
              <polygon class="foo" points="25,100,50,125,50,150,25,175,00,150,00,125,25,100" fill="url(#RadialGradient1)" style="stroke:#000;stroke-width:1;cursor: pointer;"  /> 
             <polygon class="foo" points="175,100,200,125,200,150,175,175,150,150,150,125,175,100"  fill="url(#RadialGradient1)" style="stroke-width:1;cursor: pointer;border-image:bl.png"/>  
+            <text x="83" y="35" class="caption svg_tag_name"  style="cursor: pointer;" data-info="Fact">Fact</text>
+            <text x="83" y="105" class="caption svg_tag_name"  style="cursor: pointer;" data-info="Master">Master</text>
+            <text x="160" y="125" class="caption svg_tag_name"  style="cursor: pointer;" data-info="Fact">Fact</text>
+            <text x="10" y="125" class="caption svg_tag_name"  style="cursor: pointer;" data-info="Fact">Fact</text>
         </svg>
             
         <script src="../jquery-2.1.4.min.js"></script>
@@ -66,7 +70,12 @@
                     modal: true,
                     buttons: {
                         "Save": function(){
-                            $(window.svgclicked).text($('#dept_name').val());
+                            $(window.svgclicked).data('info',$('#dept_name').val());
+                            if($('#dept_name').val().length > 6){
+                                $(window.svgclicked).text($('#dept_name').val().substr(0, 6)+'...');
+                            }else{
+                                $(window.svgclicked).text($('#dept_name').val());
+                            }
                             dialog.dialog( "close" );
                         },
                         Cancel: function() {
@@ -83,9 +92,16 @@
                     dialog.dialog( "open" );
                 });
                 $( ".svg_tag_name" ).on( "click", function() {
-                    $('#dept_name').val($(this).text());
+                    $('#dept_name').val($(this).data('info'));
                     dialog.dialog( "open" );
                     window.svgclicked =$(this);
+                });
+                
+                $( ".foo" ).on( "click", function() {
+                    console.log('click');
+                    $('svg').append("circle").attr("cx", 25).attr("cy", 25).attr("r", 25).style("fill", "purple");;
+                    //$('svg').append('<circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />');
+                    //$('svg').append(svgEl("circle"));
                 });
                 
             });
@@ -100,99 +116,70 @@
                 </fieldset>
             </form>
         </div>
- 
- 
-        <div id="users-contain" class="ui-widget">
-            <h1>Existing Users:</h1>
-            <table id="users" class="ui-widget ui-widget-content">
-                <thead>
-                    <tr class="ui-widget-header ">
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Password</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>John Doe</td>
-                        <td>john.doe@example.com</td>
-                        <td>johndoe1</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
         <!--    Modal box code End   -->
   
 
 
         <script>
-        var myApp = angular.module('myApp', []);
+            var myApp = angular.module('myApp', []);
 
 
-        function MyCtrl($scope) {
-             $scope.upCount =  0;
-             $scope.downCount =  0;
-        }
+            function MyCtrl($scope) {
+                 $scope.upCount =  0;
+                 $scope.downCount =  0;
+            }
 
-        myApp.directive('ngMouseWheelUp', function() {
+            myApp.directive('ngMouseWheelUp', function() {
                 return function(scope, element, attrs) {
                     element.bind("DOMMouseScroll mousewheel onmousewheel", function(event) {
-                           
-                    	        // cross-browser wheel delta
-                    	        var event = window.event || event; // old IE support
-                    	        var delta = Math.max(-1, Math.min(1, (event.wheelDelta || -event.detail)));
-                    	
-                    	        if(delta > 0) {
-                                    scope.$apply(function(){
-                                        scope.$eval(attrs.ngMouseWheelUp);
-                                    });
-                                
-                                    console.log('++++++++');
-                                    var w = parseInt($('svg')[0].viewBox.animVal.width) - 50; 
-                                    var h = parseInt($('svg')[0].viewBox.animVal.height) - 25; 
-                                    $('svg')[0].setAttribute('viewBox', '0 0 '+w+' '+h+'') ;
-                                    var newtrans = parseInt($('svg').css('transform').split(',')[5]) + .1;
-                                    $('svg').css('transform','scale(' + 1 + ')');
-                                    // for IE
-                                    event.returnValue = false;
-                                    // for Chrome and Firefox
-                                    if(event.preventDefault) {
-                                        event.preventDefault();                        
-                                    }
-
-                                }
+            	        // cross-browser wheel delta
+            	        var event = window.event || event; // old IE support
+            	        var delta = Math.max(-1, Math.min(1, (event.wheelDelta || -event.detail)));
+            	        if(delta > 0) {
+                            scope.$apply(function(){
+                                scope.$eval(attrs.ngMouseWheelUp);
+                            });
+                            console.log('++++++++');
+                            var w = parseInt($('svg')[0].viewBox.animVal.width) - 50; 
+                            var h = parseInt($('svg')[0].viewBox.animVal.height) - 25; 
+                            $('svg')[0].setAttribute('viewBox', '0 0 '+w+' '+h+'') ;
+                            var newtrans = parseInt($('svg').css('transform').split(',')[5]) + .1;
+                            $('svg').css('transform','scale(' + 1 + ')');
+                            // for IE
+                            event.returnValue = false;
+                            // for Chrome and Firefox
+                            if(event.preventDefault) {
+                                event.preventDefault();                        
+                            }
+                        }
                     });
                 };
-        });
+            });
 
-
-        myApp.directive('ngMouseWheelDown', function() {
+            myApp.directive('ngMouseWheelDown', function() {
                 return function(scope, element, attrs) {
                     element.bind("DOMMouseScroll mousewheel onmousewheel", function(event) {
-                           
-                                // cross-browser wheel delta
-                                var event = window.event || event; // old IE support
-                                var delta = Math.max(-1, Math.min(1, (event.wheelDelta || -event.detail)));
-                        
-                                if(delta < 0) {
-                                    scope.$apply(function(){
-                                        scope.$eval(attrs.ngMouseWheelDown);
-                                    });
-                                    console.log('--------');
-                                    var w = parseInt($('svg')[0].viewBox.animVal.width) + 50; 
-                                    var h = parseInt($('svg')[0].viewBox.animVal.height) + 25; 
-                                    $('svg')[0].setAttribute('viewBox', '0 0 '+w+' '+h+'') ;
-                                    // for IE
-                                    event.returnValue = false;
-                                    // for Chrome and Firefox
-                                    if(event.preventDefault)  {
-                                    	event.preventDefault();
-                                    }
-
-                                }
+                        // cross-browser wheel delta
+                        var event = window.event || event; // old IE support
+                        var delta = Math.max(-1, Math.min(1, (event.wheelDelta || -event.detail)));
+                        if(delta < 0) {
+                            scope.$apply(function(){
+                                scope.$eval(attrs.ngMouseWheelDown);
+                            });
+                            console.log('--------');
+                            var w = parseInt($('svg')[0].viewBox.animVal.width) + 50; 
+                            var h = parseInt($('svg')[0].viewBox.animVal.height) + 25; 
+                            $('svg')[0].setAttribute('viewBox', '0 0 '+w+' '+h+'') ;
+                            // for IE
+                            event.returnValue = false;
+                            // for Chrome and Firefox
+                            if(event.preventDefault)  {
+                            	event.preventDefault();
+                            }
+                        }
                     });
                 };
-        });
+            });
 
         </script>
     </body>
