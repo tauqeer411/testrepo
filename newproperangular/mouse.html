@@ -10,10 +10,10 @@
             }
             
             
-            *:focus{
+           /* *:focus{
                 outline: none;
                 outline-width: 0;
-            }
+            }*/
            
         </style>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
@@ -34,7 +34,7 @@
             <polygon class="foo" points="80,75,120,100,160,75,160,25,120,0,80,25"  fill="url(#RadialGradient1)" style="stroke-width:1;cursor: pointer;border-image:bl.png"/> 
             <text x="13" y="33" class="caption svg_tag_name"  style="cursor: pointer;" >Fact</text> -->
             <polygon class="foo" points="100,00,125,25,125,50,100,75,75,50,75,25,100,00" fill="url(#RadialGradient1)" style="stroke:#000;stroke-width:1;cursor: pointer;" /> 
-            <polygon class="foo" points="100,75,125,50,150,75,150,150,125,175,100,150,75,175,50,150,50,75,75,50,100,75"  fill="url(#RadialGradient1)" style="stroke-width:1;cursor: pointer;border-image:bl.png"/>  
+            <polygon class="foo" points="100,75,125,50,150,75,150,150,125,175,100,150,75,175,50,150,50,75,75,50,100,75"  fill="url(#RadialGradient1)" style="stroke-width:2;cursor: pointer;border-image:bl.png"/>  
              <polygon class="foo" points="25,100,50,125,50,150,25,175,00,150,00,125,25,100" fill="url(#RadialGradient1)" style="stroke:#000;stroke-width:1;cursor: pointer;"  /> 
             <polygon class="foo" points="175,100,200,125,200,150,175,175,150,150,150,125,175,100"  fill="url(#RadialGradient1)" style="stroke-width:1;cursor: pointer;border-image:bl.png"/>  
             <text x="83" y="35" class="caption svg_tag_name"  style="cursor: pointer;" data-info="Fact">Fact</text>
@@ -99,7 +99,7 @@
                 
                 $( ".foo" ).on( "click", function() {
                     console.log('click');
-                    $('svg').append("circle").attr("cx", 25).attr("cy", 25).attr("r", 25).style("fill", "purple");;
+                    //$('svg').append("circle").attr("cx", 25).attr("cy", 25).attr("r", 25).style("fill", "purple");;
                     //$('svg').append('<circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />');
                     //$('svg').append(svgEl("circle"));
                 });

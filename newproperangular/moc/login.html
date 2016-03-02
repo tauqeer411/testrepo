@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html debug="true">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<style type="text/css">md-autocomplete {  background: rgb(250,250,250);}
+			md-card {  background-color: rgb(255,255,255);  border-radius: 2px;}
+			md-checkbox.md-checked .md-icon:after {  border-color: rgb(238,238,238);}
+			md-checkbox[disabled].md-checked .md-icon {  background-color: rgba(0,0,0,0.26);}
+			md-chips .md-chips {  box-shadow: 0 1px rgb(224,224,224);}
+			md-chips .md-chip {  background: rgb(224,224,224);  color: rgb(66,66,66);}
+			md-chips md-chip-remove .md-button md-icon path {  fill: rgb(158,158,158);}
+			.md-contact-suggestion span.md-contact-email {  color: rgb(189,189,189);}
+			md-content {  color: rgba(0,0,0,0.87);  background-color: rgb(255,255,255);}
+
+		</style>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="docomo">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="shortcut icon" href="https://app.sococo.com/img/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="./Sococo_login_files/vendor.css">
+		<link rel="stylesheet" href="./Sococo_login_files/app.css">
+		<link rel="stylesheet" href="./Sococo_login_files/css">
+		<link rel="chrome-webstore-item">
+	</head>
+	<body class="layout layout-column layout-fill" sc-rocket-shorts="" ng-class="">
+
+		<ng-view  class="main-view layout layout-fill layout-row ng-scope login-view-animate" >
+			<div class="login-view flex layout layout-row layout-align-center-center ">
+	  			<md-content class="login md-padding md-whiteframe-z1 layout-margin ng-scope md-default-theme" >
+	    			<md-content class="md-default-theme">
+	      				<header class="layout layout-column layout-align-center-center">
+	        				<md-icon class="logo-icon ng-isolate-scope md-default-theme" md-svg-src="img/svg/sc_logo.svg" aria-hidden="true">
+	        					<!-- <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 280 56" enable-background="new 0 0 280 56" xml:space="preserve" fit="" preserveAspectRatio="xMidYMid meet" style="pointer-events: none; display: block;">
+									<path d="
+
+									M84.953,24.707 c0-2.076,1.684-3.754,3.762-3.754c2.074,0,3.754,1.678,3.754,3.754c0,2.074-1.68,3.758-3.754,3.758 C86.637,28.465,84.953,26.781,84.953,24.707z 
+
+									M75.727,24.707c0,2.074-1.68,3.758-3.754,3.758c-2.082,0-3.762-1.684-3.762-3.758
+									c0-2.076,1.68-3.754,3.762-3.754C74.047,20.953,75.727,22.631,75.727,24.707z 
+									
+									M80.223,55.045c8.607,0,16.504-4.027,21.445-10.301 c4.25-0.297,8.336-2.953,8.336-7.113c0-1.52,0-17.877,0-19.503c0-3.922-4.203-6.67-8.336-6.828 c-5.199-6.4-12.996-10.344-21.445-10.344l0,0c-8.445,0-16.027,3.943-21.219,10.344c-4.133,0.158-8.527,2.906-8.527,6.828 c0,1.626,0,17.983,0,19.503c0,4.16,4.287,6.816,8.527,7.113C63.945,51.018,71.621,55.045,80.223,55.045L80.223,55.045z 
+
+									M93.793,37.842c-1.324-1.242-2.988-1.656-4.551-1.039l-6.313,2.422c-2.16,0.832-3.24,3.254-2.406,5.414
+									c0.824,2.16,3.25,3.242,5.414,2.414l6.309-2.426c1.523-0.586,2.547-1.965,2.684-3.77l6.066-2.461
+									c-0.754,3.359-7.715,13.18-20.773,13.18c-12.801,0-20.818-9.785-20.818-15.465V19.887c0-5.681,7.881-15.558,20.818-15.558
+									c13.02,0,21.023,9.877,21.023,15.558c0,1.027,0,15.049,0,15.049L93.793,37.842z
+
+
+									M250.928,5.147c-12.711,0-23,10.295-23,23.003c0,12.707,10.289,23.004,23,23.004c12.703,0,23-10.297,23-23.004	C273.928,15.442,263.631,5.147,250.928,5.147z 
+
+									M250.928,38.193c-5.547,0-10.043-4.496-10.043-10.043
+									c0-5.545,4.496-10.042,10.043-10.042s10.039,4.497,10.039,10.042C260.967,33.697,256.475,38.193,250.928,38.193z 
+
+									M168.619,5.147
+									c-12.707,0-23.006,10.295-23.006,23.003c0,12.707,10.299,23.004,23.006,23.004s23.008-10.297,23.008-23.004
+									C191.627,15.442,181.326,5.147,168.619,5.147z
+
+									 M168.619,38.193c-5.547,0-10.047-4.496-10.047-10.043
+									c0-5.545,4.5-10.042,10.047-10.042c5.543,0,10.039,4.497,10.039,10.042C178.658,33.697,174.162,38.193,168.619,38.193z
+
+									M142.285,36.869v13.602c-1.793,0.445-3.664,0.672-5.555,0.672c-6.145,0-11.918-2.391-16.268-6.734
+									c-4.346-4.348-6.736-10.129-6.736-16.273c0-6.137,2.391-11.913,6.736-16.261c4.35-4.346,10.123-6.738,16.268-6.738
+									c1.891,0,3.762,0.229,5.555,0.674v13.6c-1.605-1.027-3.512-1.621-5.555-1.621c-5.707,0-10.352,4.646-10.352,10.347
+									c0,5.711,4.645,10.359,10.352,10.359C138.773,38.494,140.68,37.896,142.285,36.869z 
+
+									M223.955,36.869v13.594c-1.805,0.445-3.664,0.672-5.563,0.672c-6.145,0-11.918-2.398-16.262-6.738c-4.348-4.348-6.738-10.117-6.738-16.266
+									s2.391-11.923,6.738-16.265c4.344-4.346,10.117-6.742,16.262-6.742c1.898,0,3.758,0.232,5.563,0.676v13.594
+									c-1.609-1.021-3.516-1.613-5.563-1.613c-5.707,0-10.355,4.642-10.355,10.351c0,5.711,4.648,10.352,10.355,10.352
+									C220.439,38.482,222.346,37.889,223.955,36.869z 
+
+									"></path>
+								</svg> -->
+								<img src="./Sococo_login_files/D.png">
+							</md-icon>
+	     				</header>
+				      	<div class="flex layout layout-row layout-align-center-center">
+				        	<h1 class="md-accent ng-binding ng-scope">Log In</h1>
+				      	</div>
+	   				</md-content>
+				    <iframe name="loginFrame" style="display: none">
+				    </iframe>
+
+					<form name="loginForm"  method="post" action="#" target="loginFrame" class="ng-pristine ng-scope ng-invalid ng-invalid-required">
+	      				<input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
+	      				<md-content class="md-padding md-default-theme">
+	        				<md-input-container class="flex md-input-has-messages md-default-theme">
+	          					<input required="" ng-model="ctrl.email" name="email" class="ng-pristine ng-untouched md-input ng-invalid ng-invalid-required" id="input_2" tabindex="0" aria-required="true" aria-invalid="true" placeholder="Your Email">
+
+					          	<div ng-messages="loginForm.email.$error" aria-live="assertive" class="ng-inactive">
+					          	</div>
+	        				</md-input-container>
+	        				<md-input-container class="flex md-input-has-messages md-default-theme">
+								
+								<input required="" ng-model="ctrl.password" type="password" name="password" class="ng-pristine ng-untouched md-input ng-invalid ng-invalid-required" id="input_3" tabindex="0" aria-required="true" aria-invalid="true" placeholder="Your Password">
+
+								<div ng-messages="loginForm.password.$error" aria-live="assertive" class="ng-inactive">
+								</div>
+	        				</md-input-container>
+	          				<md-checkbox ng-model="ctrl.rememberMe" class="md-primary ng-pristine ng-untouched ng-valid flex md-default-theme" role="checkbox" tabindex="0" aria-checked="false" aria-invalid="false" aria-label="Keep me logged in">
+	          					<div class="md-container" md-ink-ripple="" md-ink-ripple-checkbox="">
+	          						<div class="md-icon"></div>
+	          					</div>
+	          					<div ng-transclude="" class="md-label">
+	          						<span class="ng-binding ng-scope">Keep me logged in</span>
+	          					</div>
+	          				</md-checkbox>
+	        
+	        				<div class="md-actions flex layout layout-row layout-align-end-center"  layout-align="end center">
+	          					<button class="md-primary md-raised md-button md-default-theme" ng-transclude="" id="login-btn"  tabindex="0">
+	          						<span class="ng-binding ng-scope">Log In</span>
+	          					</button>
+	        				</div>
+					        <div class="flex layout layout-row layout-align-center-center">
+					          	<a class="forgot ng-binding" href="#">Forgot password?</a>
+					        </div>
+	      				</md-content>
+	    			</form>
+	  			</md-content>
+			</div>
+		</ng-view>
+	</body>
+</html>
