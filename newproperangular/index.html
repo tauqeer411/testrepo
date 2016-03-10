@@ -5,36 +5,72 @@
 	<script type="text/javascript" src="angularV1.2.15.min.js"></script>
 </head>
 <body>
-<!-- <div class="container" data-ng-init="names=['aftab','tauqeer','hashir','Shoiab','tets']">
+	<div class="container" data-ng-controller="SimpleController">
+		<h3>Adding Simple controller </h3>
+		Name: <input type="text" ng-model="name" /> {{name}}
+		<ul>
+			<li data-ng-repeat="cust in customers">
+				{{ cust.name | filter:cust.name | lowercase}} - {{ cust.city }}
+				
+			</li>
+				
+		</ul>
+	</div>
 
-	<ul>
-		<li ng-repeat="x in names">{{x | filter:name | lowercase }}</li>
-	</ul>
-</div>  -->
+	 <form ng-controller="FormCtrl" ng-submit="submitForm()">
+        First name:    <br/><input type="text" ng-model="form.firstname">    <br/><br/>
+        Email Address: <br/><input type="text" ng-model="form.emailaddress"> <br/><br/>
+        Description:<br/> <textarea rows="3" cols="25" ng-model="form.textareacontent"></textarea>
+            <br/>
+        <input type="radio" ng-model="form.gender" value="female" />Female ...
+        <input type="radio" ng-model="form.gender" value="male" />Male <br/>
+            <br/>
+        <input type="checkbox" ng-model="form.member" />Already a member
+            <br/>
+        <input type="submit" ngClick="Submit" >
+    </form>
+	<script>
+		function SimpleController($scope){
+			$scope.customers = [
+								{ name :'Tauqeer Ahmad', city: 'Lucknow'},
+								{ name :'manish', city: 'test arws'},
+								{ name :'aftab', city: 'noida'},
+								{ name :'shoi', city: 'gahziapur'},
+								{ name :'testuser', city: 'testplace'},
+								{ name :'arshad', city: 'usa'},
+								];
+		}
 
-<div class="container" data-ng-controller="SimpleController">
-	<h3>Adding Simple controller </h3>
-	Name: <input type="text" ng-model="name" /> {{name}}
-	<ul>
-		<li data-ng-repeat="cust in customers">
-			{{ cust.name | filter:cust.name | lowercase}} - {{ cust.city }}
-			
-		</li>
-			
-	</ul>
-</div>
-<script>
-	function SimpleController($scope){
-		$scope.customers = [
-							{ name :'Tauqeer Ahmad', city: 'Lucknow'},
-							{ name :'manish', city: 'test arws'},
-							{ name :'aftab', city: 'noida'},
-							{ name :'shoi', city: 'gahziapur'},
-							{ name :'testuser', city: 'testplace'},
-							{ name :'arshad', city: 'usa'},
-							];
-	}
-</script>
+		//var app = angular.module('myApp', []);
+		function FormCtrl($scope, $http){
+		
+			var formData = {
+			    firstname: "default",
+			    emailaddress: "default",
+			    textareacontent: "default",
+			    gender: "default",
+			    member: false
+			};
+
+
+			$scope.submitForm = function() {
+
+			    $http({
+
+			        url: "form2.php",
+			        data: $scope.form,
+			        method: 'POST',
+			        headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+
+			    }).success(function(data){
+
+			        console.log("OK", data)
+
+			    }).error(function(err){"ERR", console.log(err)})
+			};
+
+		};
+	</script>
 
 </body>
 </html>
